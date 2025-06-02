@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper - Discover Links</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Discover Links</h1>
+    <p>Enter one or more base URLs below (one per line or comma-separated) to discover internal links. The scraper will attempt to find all pages under the same domain and path prefix.</p>
+
+    <form action="{{ url_for('discover') }}" method="post">
+        <label for="urls">Base URLs:</label><br>
+        <textarea id="urls" name="urls" rows="5" required placeholder="e.g., https://example.com&#10;http://another-site.org/docs"></textarea>
+        <button type="submit">Discover Links</button>
+    </form>
+
+    <hr>
+    <footer>
+        <p>&copy; 2024 Web Scraper App</p>
+    </footer>
+</div>
+</body>
+</html>

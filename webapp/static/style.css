@@ -1,0 +1,165 @@
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container to center content and add padding */
+.container {
+    width: 80%;
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #333;
+    margin-bottom: 0.7em;
+}
+h1 {
+    font-size: 2.2em;
+    border-bottom: 2px solid #3498db; /* Blue accent for H1 */
+    padding-bottom: 0.3em;
+}
+h2 {
+    font-size: 1.8em;
+    color: #3498db; /* Blue for H2 */
+}
+
+/* Paragraphs and Text */
+p {
+    margin-bottom: 1em;
+}
+
+/* Links */
+a {
+    color: #3498db; /* Blue links */
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+    color: #2980b9; /* Darker blue on hover */
+}
+
+/* Form Elements */
+form {
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+textarea, input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* So padding doesn't expand width */
+}
+button[type="submit"], .button {
+    display: inline-block;
+    background-color: #3498db; /* Blue button */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none; /* For .button class on <a> tags */
+}
+button[type="submit"]:hover, .button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
+button:disabled {
+    background-color: #bdc3c7; /* Grey for disabled button */
+    cursor: not-allowed;
+}
+
+/* Lists (used for discovered links, selected links) */
+ul.link-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+ul.link-list li {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+ul.link-list li:last-child {
+    border-bottom: none;
+}
+ul.link-list input[type="checkbox"] {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Specific Sections */
+.base-url-section {
+    margin-bottom: 25px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Error and Success Messages */
+.error-message {
+    color: #c0392b; /* Red for errors */
+    background-color: #fdd; /* Light red background */
+    border: 1px solid #c0392b;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+.success-message {
+    color: #27ae60; /* Green for success */
+    background-color: #e6ffed; /* Light green background */
+    border: 1px solid #27ae60;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+.summary-box {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+}
+.summary-box p {
+    margin-bottom: 0.5em;
+}
+.summary-box strong {
+    color: #333;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    font-size: 0.9em;
+    color: #777;
+}
+hr {
+    border: 0;
+    height: 1px;
+    background: #eee;
+    margin: 20px 0;
+}
+code {
+    background-color: #ecf0f1;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}

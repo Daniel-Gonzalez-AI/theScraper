@@ -1,0 +1,44 @@
+# Git specific
+.git
+.gitignore
+
+# Python specific
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.env
+.venv/
+env/
+venv/
+ENV/
+
+# Docker specific
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# IDE specific
+.idea/
+.vscode/
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Other
+*.log
+*.pot
+*.py[cod]
+*.swp
+*~
+*.tmp
+*.bak
+*.orig
+
+# If you have a local data directory that shouldn't be copied (using volume instead)
+# Web_Scrapes/ # If you ever create it locally for testing, it shouldn't go into the image
+# /data/ # This refers to the root /data which isn't typical to have in project
+# data/ # If you have a local 'data' folder for tests
+# scraper_data/ # If you named a local folder this way
