@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scraping Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Scraping Session Results</h1>
+
+    {% if error_message %}
+        <div class="summary-box error-message">
+            <p>An unexpected error occurred during the scraping process: {{ error_message }}</p>
+            <p>No files may have been saved. Please check the logs and the file manager if a directory was created.</p>
+        </div>
+    {% elif output_directory %}
+        <div class="summary-box">
+            <p class="success-message">Scraping session completed!</p>
+            <p><strong>Output Directory:</strong> <code>{{ output_directory }}</code></p>
+            <p>Successfully scraped <strong>{{ num_scraped }}</strong> out of <strong>{{ num_selected }}</strong> selected links.</p>
+
+            {% if errors and errors|length > 0 %}
+                <p class="error-message">The following {{ errors|length }} link(s) could not be scraped:</p>
+                <ul class="link-list">
+                    {% for error_url in errors %}
+                        <li><code>{{ error_url }}</code></li>
+                    {% endfor %}
+                </ul>
+            {% elif num_scraped == num_selected and num_selected > 0 %}
+                <p class="success-message">All selected links were scraped successfully!</p>
+            {% elif num_selected == 0 %}
+                 <p>No links were selected for scraping in this session.</p>
+            {% endif %}
+        </div>
+
+        <p>You can access the scraped files using the File Manager. The File Manager will show the main <code>Web_Scrapes</code> directory. Your files are in a subfolder within that, typically named after the primary domain and the timestamp of the session.</p>
+        <p>
+            <a href="http://localhost:8080/filebrowser/" target="_blank" class="button">Access Scraped Files (File Manager)</a>
+        </p>
+
+    {% else %}
+        <div class="summary-box error-message">
+             <p>Scraping could not be completed or no results are available.</p>
+             <p>This might be due to a critical error during the setup (e.g., cannot create output directory), or because no links were ultimately processed.</p>
+             <p>Please check server logs for more details if issues persist.</p>
+        </div>
+    {% endif %}
+
+    {% if selected_links and selected_links|length > 0 %}
+        <h2>Processed Links Summary:</h2>
+        <ul class="link-list">
+            {% for link in selected_links %}
+                <li>
+                    {% if errors and link in errors %}
+                        <span style="color: #c0392b; font-weight: bold;">[FAILED]</span>
+                    {% elif output_directory %} {# Assume success if output_dir exists and not in errors #}
+                        <span style="color: #27ae60; font-weight: bold;">[SCRAPED]</span>
+                    {% else %}
+                        <span style="color: #7f8c8d; font-weight: bold;">[UNKNOWN]</span>
+                    {% endif %}
+                    <code>{{ link }}</code>
+                </li>
+            {% endfor %}
+        </ul>
+    {% elif not error_message %}
+        {# Only show this if there wasn't a more general error_message displayed above #}
+        <p>No specific links were submitted or processed in this scraping request.</p>
+    {% endif %}
+
+    <hr>
+    <p><a href="{{ url_for('index') }}" class="button">Start New Scraping Session</a></p>
+    <footer>
+        <p>&copy; 2024 Web Scraper App</p>
+    </footer>
+</div>
+</body>
+</html>
