@@ -78,6 +78,7 @@ Web Scraper UI is a Flask-based web application that allows users to scrape text
 ## Netlify Deployment
 
 The project can be deployed to [Netlify](https://www.netlify.com/) using Netlify Functions for the Flask backend. The repository includes a `netlify.toml` configuration and a function wrapper under `netlify/functions/`.
+All incoming requests are redirected to the function via `webapp/static/_redirects`.
 
 To deploy:
 
@@ -90,6 +91,7 @@ To deploy:
    netlify deploy --build
    ```
    Follow the CLI prompts to create or select a site. After the initial deploy, you can use `netlify deploy --prod` to publish.
+   Ensure the `_redirects` file is included so all routes are served by the Flask function.
 
 During the build, Netlify will install Python dependencies declared in `netlify/functions/requirements.txt` and package the Flask app as a serverless function.
 
