@@ -12,8 +12,9 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Updated ROOT_OUTPUT_DIR for Docker volume mapping
-ROOT_OUTPUT_DIR = "/data/Web_Scrapes"
+# Output directory can be overridden with SCRAPER_OUTPUT_DIR.
+# Default to a writable location within the container/CI environment.
+ROOT_OUTPUT_DIR = os.getenv("SCRAPER_OUTPUT_DIR", "/tmp/Web_Scrapes")
 
 def setup_session_logging(log_file_path):
     # This function might need changes for a web app context,

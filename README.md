@@ -70,7 +70,7 @@ Web Scraper UI is a Flask-based web application that allows users to scrape text
 
 ## Configuration Notes
 
-*   **Output Directory:** The web application saves scraped files to `/data/Web_Scrapes` inside its container. This path is mapped to the `scraper_data` Docker volume.
+*   **Output Directory:** Scraped files are saved to a directory controlled by the `SCRAPER_OUTPUT_DIR` environment variable. If not set, it defaults to `/tmp/Web_Scrapes` (or `/data/Web_Scrapes` when using Docker). This path should map to the `scraper_data` Docker volume when running with containers.
 *   **Filebrowser Root:** Filebrowser is configured to use `/srv/Web_Scrapes` as its root directory. This path also maps to the `Web_Scrapes` folder within the shared `scraper_data` volume, effectively showing the same data as the scraper produces.
 *   **Filebrowser Authentication:** For development purposes, Filebrowser authentication is currently disabled (`FB_NOAUTH=true`). For a production environment, you should enable authentication by setting `FB_NOAUTH=false` in `docker-compose.yml` and configuring users (refer to Filebrowser documentation).
 *   **Scraping Depth:** The maximum depth for link discovery (`MAX_DISCOVERY_DEPTH`) is set as a constant in `webapp/scraper.py`.
