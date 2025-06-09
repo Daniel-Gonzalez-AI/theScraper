@@ -75,6 +75,24 @@ Web Scraper UI is a Flask-based web application that allows users to scrape text
 *   **Filebrowser Authentication:** For development purposes, Filebrowser authentication is currently disabled (`FB_NOAUTH=true`). For a production environment, you should enable authentication by setting `FB_NOAUTH=false` in `docker-compose.yml` and configuring users (refer to Filebrowser documentation).
 *   **Scraping Depth:** The maximum depth for link discovery (`MAX_DISCOVERY_DEPTH`) is set as a constant in `webapp/scraper.py`.
 
+## Netlify Deployment
+
+The project can be deployed to [Netlify](https://www.netlify.com/) using Netlify Functions for the Flask backend. The repository includes a `netlify.toml` configuration and a function wrapper under `netlify/functions/`.
+
+To deploy:
+
+1. **Install the Netlify CLI** (optional for local testing):
+   ```bash
+   npm install -g netlify-cli
+   ```
+2. **Build and deploy**:
+   ```bash
+   netlify deploy --build
+   ```
+   Follow the CLI prompts to create or select a site. After the initial deploy, you can use `netlify deploy --prod` to publish.
+
+During the build, Netlify will install Python dependencies declared in `netlify/functions/requirements.txt` and package the Flask app as a serverless function.
+
 ## Troubleshooting
 
 *   **Port Conflicts:** Ensure ports `5000` and `8080` (or any other ports you configure) are not already in use by other applications on your host machine.

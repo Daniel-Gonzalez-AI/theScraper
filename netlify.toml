@@ -1,0 +1,8 @@
+[build]
+  command = "pip install -r requirements.txt"
+  functions = "netlify/functions"
+  publish = "webapp/static"
+
+[dev]
+  command = "flask run --port 8888"
+  targetPort = 8888
