@@ -83,5 +83,4 @@ Web Scraper UI is a Flask-based web application that allows users to scrape text
 *   **Firewall:** Ensure your firewall is not blocking access to the specified ports if you are trying to access the application from another machine on your network. For local access, this is usually not an issue.
 
 ---
-
-*This README provides a guide to setting up, running, and using the Web Scraper UI application.*
+ArtemisAI - Open Source Project - 2025
