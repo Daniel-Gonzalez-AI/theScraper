@@ -1,0 +1,27 @@
+# Python caches and compiled files
+__pycache__/
+*.py[cod]
+
+# Environment variables and virtualenvs
+.env
+.venv/
+venv/
+ENV/
+env/
+
+# Logs
+logs/
+*.log
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Miscellaneous
+*.swp
+.DS_Store
+
+# Node
+node_modules/
+
