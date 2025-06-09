@@ -17,6 +17,7 @@
         <form action="{{ url_for('scrape_selected') }}" method="post">
             {% set has_discoverable_links = false %}
             {% for base_url, result in discovery_results.items() %}
+                {% set outer_index = loop.index %}
                 <div class="base-url-section">
                     <h2>Base URL: <code>{{ base_url }}</code></h2>
                     {% if result.error %}
@@ -27,7 +28,7 @@
                         <ul class="link-list">
                             {% for link in result.links %}
                                 {# Generate a unique ID for each checkbox and label pair #}
-                                {% set checkbox_id = "link_" ~ loop.parent.loop.index ~ "_" ~ loop.index %}
+                                {% set checkbox_id = "link_" ~ outer_index ~ "_" ~ loop.index %}
                                 <li>
                                     <input type="checkbox" name="selected_links" value="{{ link }}" id="{{ checkbox_id }}" checked>
                                     <label for="{{ checkbox_id }}">{{ link }}</label>
