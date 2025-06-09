@@ -15,7 +15,7 @@
         <p class="error-message">No URLs were processed, or no discovery results are available. Please <a href="{{ url_for('index') }}">try again</a>.</p>
     {% else %}
         <form action="{{ url_for('scrape_selected') }}" method="post">
-            {% set has_discoverable_links = false %}
+            {% set ns = namespace(has_discoverable_links=false) %}
             {% for base_url, result in discovery_results.items() %}
                 {% set outer_index = loop.index %}
                 <div class="base-url-section">
@@ -23,7 +23,7 @@
                     {% if result.error %}
                         <p class="error-message">Error during discovery: {{ result.error }}</p>
                     {% elif result.links and result.links|length > 0 %}
-                        {% set has_discoverable_links = true %}
+                        {% set ns.has_discoverable_links = true %}
                         <p>Found {{ result.links|length }} unique link(s). Select links to scrape:</p>
                         <ul class="link-list">
                             {% for link in result.links %}
@@ -45,7 +45,7 @@
                 </div>
             {% endfor %}
 
-            {% if has_discoverable_links %}
+            {% if ns.has_discoverable_links %}
                 <button type="submit">Scrape Selected Links</button>
             {% else %}
                 <p>No links available to scrape. You might want to <a href="{{ url_for('index') }}">try different URLs or check the logs</a>.</p>
