@@ -1,4 +1,4 @@
-version: '3.8'
+#version: '3.8'
 
 services:
   web:
@@ -24,7 +24,6 @@ services:
       # Optional: If you had a specific config file:
       # - ./filebrowser_config.json:/config/config.json
     user: root # Running as root to ensure permissions on the volume for now. Simpler for setup.
-               # Filebrowser image might run as non-root by default, this overrides.
     environment:
       - FB_PORT=80 # Port Filebrowser listens on inside the container
       - FB_ADDRESS=0.0.0.0 # Listen on all interfaces within the container

@@ -3,7 +3,7 @@ FROM python:3.9-slim
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
-ENV PYTHONDONTWRITEBYTECODE=1 # Prevents python from writing .pyc files to disc
+ENV PYTHONDONTWRITEBYTECODE=1
 ENV FLASK_APP=webapp/app.py
 ENV FLASK_RUN_HOST=0.0.0.0
 # ENV FLASK_DEBUG=1 # Optional: enable debug mode, already in app.py's app.run for now
