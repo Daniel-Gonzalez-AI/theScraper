@@ -9,7 +9,7 @@ This file outlines planned enhancements for the Web Scraper UI.
 - **Processing Spinner & Log View**:
   - Show a spinner while scraping is in progress.
   - Include a log dropdown (collapsed initially) that displays live status updates. When collapsed, show only the latest log line.
-- **Attribution & Licensing**: Display "Developed by Artemis Applied Research 2025" in the footer and add an open-source license suitable for this project.
+- [x] **Attribution & Licensing**: Display "Developed by Artemis Applied Research 2025" in the footer and add an open-source license suitable for this project.
 - **Concatenate Files**: After scraping, provide a button to concatenate selected or all text files into a single `.txt` download.
 - **Export Formats**: Offer options to convert concatenated results to PDF or other formats.
 

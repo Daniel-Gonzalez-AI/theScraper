@@ -102,5 +102,9 @@ During the build, Netlify will install Python dependencies declared in `netlify/
 *   **Permissions Issues (Volumes):** Docker named volumes generally handle permissions well. If you encounter issues with files not being written, check the container logs. Running Filebrowser as `user: root` in `docker-compose.yml` is a workaround for some permission complexities but consider refining permissions for production.
 *   **Firewall:** Ensure your firewall is not blocking access to the specified ports if you are trying to access the application from another machine on your network. For local access, this is usually not an issue.
 
+## License
+
+This project is licensed under the [MIT License](LICENSE). See the LICENSE file for details.
+
 ---
 ArtemisAI - Open Source Project - 2025
