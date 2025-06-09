@@ -93,7 +93,7 @@ To deploy:
    Follow the CLI prompts to create or select a site. After the initial deploy, you can use `netlify deploy --prod` to publish.
    Ensure the `_redirects` file is included so all routes are served by the Flask function.
 
-During the build, Netlify will install Python dependencies declared in `netlify/functions/requirements.txt` and package the Flask app as a serverless function.
+During the build, Netlify installs dependencies from `netlify/functions/requirements.txt` into the functions directory. This is configured in `netlify.toml` using `pip install -r netlify/functions/requirements.txt -t netlify/functions` so that the Flask app is properly packaged as a serverless function.
 
 ## Troubleshooting
 
@@ -101,6 +101,10 @@ During the build, Netlify will install Python dependencies declared in `netlify/
 *   **Filebrowser Empty:** If Filebrowser shows an empty `/Web_Scrapes` directory, it means no scraping sessions have been completed yet, or there was an issue saving the files. Check the web application logs via `docker-compose logs web`.
 *   **Permissions Issues (Volumes):** Docker named volumes generally handle permissions well. If you encounter issues with files not being written, check the container logs. Running Filebrowser as `user: root` in `docker-compose.yml` is a workaround for some permission complexities but consider refining permissions for production.
 *   **Firewall:** Ensure your firewall is not blocking access to the specified ports if you are trying to access the application from another machine on your network. For local access, this is usually not an issue.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE). See the LICENSE file for details.
 
 ---
 ArtemisAI - Open Source Project - 2025

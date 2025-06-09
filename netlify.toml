@@ -1,5 +1,5 @@
 [build]
-  command = "pip install -r requirements.txt"
+  command = "pip install -r netlify/functions/requirements.txt -t netlify/functions && pip install -r requirements.txt"
   functions = "netlify/functions"
   publish = "webapp/static"
 
