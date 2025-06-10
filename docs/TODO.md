@@ -6,7 +6,7 @@ This file outlines planned enhancements for the Web Scraper UI.
 
 - [x] **Dark/Light Mode Toggle**: Basic JavaScript-powered theme switcher with persistent preference.
 - **Tailwind CSS Styling**: Apply a clean Tailwind-based design throughout the interface.
-- **Processing Spinner & Log View**:
+- [x] **Processing Spinner & Log View**:
   - Show a spinner while scraping is in progress.
   - Include a log dropdown (collapsed initially) that displays live status updates. When collapsed, show only the latest log line.
 - [x] **Attribution & Licensing**: Display "Developed by Artemis Applied Research 2025" in the footer and add an open-source license suitable for this project.

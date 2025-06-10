@@ -70,3 +70,4 @@ def test_scrape_selected_footer(client, local_site):
     assert resp.status_code == 200
     assert b'Developed by Artemis Applied Research 2025' in resp.data
     assert b'mode-toggle' in resp.data
+    assert b'toggle-log' in resp.data

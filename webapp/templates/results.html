@@ -6,6 +6,7 @@
     <title>Discovered Links - Select to Scrape</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script defer src="{{ url_for('static', filename='darkmode.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='ui.js') }}"></script>
 </head>
 <body>
 <div class="container">
@@ -61,6 +62,9 @@
     <footer>
         <p>Developed by Artemis Applied Research 2025</p>
     </footer>
+</div>
+<div id="spinner-overlay" class="spinner-overlay">
+    <div class="spinner"></div>
 </div>
 </body>
 </html>

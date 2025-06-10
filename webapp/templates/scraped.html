@@ -6,6 +6,7 @@
     <title>Scraping Results</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script defer src="{{ url_for('static', filename='darkmode.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='ui.js') }}"></script>
 </head>
 <body>
 <div class="container">
@@ -69,6 +70,14 @@
         {# Only show this if there wasn't a more general error_message displayed above #}
         <p>No specific links were submitted or processed in this scraping request.</p>
     {% endif %}
+
+    <div class="log-dropdown">
+        <button id="toggle-log" type="button">Show Logs</button>
+        <pre id="latest-log">{{ logs[-1] if logs else 'No log entries' }}</pre>
+        <div id="log-container" class="hidden">
+            <pre>{{ logs|join('\n') if logs else 'No log entries' }}</pre>
+        </div>
+    </div>
 
     <button id="mode-toggle" type="button">Dark Mode</button>
     <hr>
