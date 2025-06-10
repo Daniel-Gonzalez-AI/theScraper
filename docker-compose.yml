@@ -30,7 +30,7 @@ services:
       - FB_BASEURL=/filebrowser # Serve Filebrowser under /filebrowser subpath (optional)
       - FB_ROOT=/srv/Web_Scrapes # CRUCIAL: Root directory for Filebrowser to manage.
                                  # This points to the Web_Scrapes folder *inside* the /srv volume mount,
-                                 # which corresponds to /data/Web_Scrapes for the Python app.
+                                 # which corresponds to the path specified by SCRAPER_OUTPUT_DIR for the Python app.
       - FB_DATABASE=/srv/filebrowser.db # Store database in the persistent volume.
       - FB_NOAUTH=true # Disable authentication for easy initial access.
                        # For production, set to false and configure users.
