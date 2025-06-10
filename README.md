@@ -108,4 +108,4 @@ During the build, Netlify installs dependencies from `netlify/functions/requirem
 This project is licensed under the [MIT License](LICENSE). See the LICENSE file for details.
 
 ---
-ArtemisAI - Open Source Project - 2025
+Developed as an open source resource by Daniel Gonzalez at ArtemisAI

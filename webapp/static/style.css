@@ -8,16 +8,6 @@ body {
     line-height: 1.6;
 }
 
-/* Container to center content and add padding */
-.container {
-    width: 80%;
-    max-width: 960px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
 /* Headings */
 h1, h2, h3 {
@@ -165,29 +155,29 @@ code {
 }
 
 /* Dark Mode Styles */
-body.dark-mode {
+.dark {
     background-color: #1e1e1e;
     color: #eee;
 }
 
-body.dark-mode .container {
+.dark .container {
     background-color: #2b2b2b;
 }
 
-body.dark-mode a {
+.dark a {
     color: #6ca0ff;
 }
 
-body.dark-mode .summary-box {
+.dark .summary-box {
     background-color: #333;
     border-color: #555;
 }
 
-body.dark-mode .error-message {
+.dark .error-message {
     background-color: #552222;
 }
 
-body.dark-mode .success-message {
+.dark .success-message {
     background-color: #225522;
 }
 

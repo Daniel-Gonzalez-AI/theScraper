@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scraping Results</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script defer src="{{ url_for('static', filename='darkmode.js') }}"></script>
     <script defer src="{{ url_for('static', filename='ui.js') }}"></script>
 </head>
-<body>
-<div class="container">
-    <h1>Scraping Session Results</h1>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+<div class="max-w-3xl mx-auto my-8 p-6 bg-white dark:bg-gray-800 rounded shadow">
+    <h1 class="text-2xl font-bold mb-4 border-b border-blue-500 pb-2">Scraping Session Results</h1>
 
     {% if error_message %}
         <div class="summary-box error-message">
@@ -39,7 +40,7 @@
 
         <p>You can access the scraped files using the File Manager. The File Manager will show the main <code>Web_Scrapes</code> directory. Your files are in a subfolder within that, typically named after the primary domain and the timestamp of the session.</p>
         <p>
-            <a href="http://localhost:8080/filebrowser/" target="_blank" class="button">Access Scraped Files (File Manager)</a>
+            <a href="http://localhost:8080/filebrowser/" target="_blank" class="px-4 py-2 bg-blue-500 text-white rounded">Access Scraped Files (File Manager)</a>
         </p>
 
     {% else %}
@@ -71,19 +72,19 @@
         <p>No specific links were submitted or processed in this scraping request.</p>
     {% endif %}
 
-    <div class="log-dropdown">
-        <button id="toggle-log" type="button">Show Logs</button>
+    <div class="log-dropdown mt-6">
+        <button id="toggle-log" type="button" class="mb-2 px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded">Show Logs</button>
         <pre id="latest-log">{{ logs[-1] if logs else 'No log entries' }}</pre>
         <div id="log-container" class="hidden">
             <pre>{{ logs|join('\n') if logs else 'No log entries' }}</pre>
         </div>
     </div>
 
-    <button id="mode-toggle" type="button">Dark Mode</button>
-    <hr>
-    <p><a href="{{ url_for('index') }}" class="button">Start New Scraping Session</a></p>
-    <footer>
-        <p>Developed by Artemis Applied Research 2025</p>
+    <button id="mode-toggle" type="button" class="mb-4 px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded">Dark Mode</button>
+    <hr class="my-4">
+    <p><a href="{{ url_for('index') }}" class="px-4 py-2 bg-blue-500 text-white rounded">Start New Scraping Session</a></p>
+    <footer class="text-center text-sm text-gray-600 dark:text-gray-400 mt-4">
+        <p>Developed as an open source resource by Daniel Gonzalez at ArtemisAI</p>
     </footer>
 </div>
 </body>
