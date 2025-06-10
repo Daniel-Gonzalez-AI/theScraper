@@ -1,8 +1,13 @@
 [build]
   # Install dependencies and bundle application code for the serverless function
-  command = "pip install -r netlify/functions/requirements.txt -t netlify/functions && cp -r webapp netlify/functions && pip install -r requirements.txt"
-  functions = "netlify/functions"
+  command = "pip install -r netlify/functions/requirements.txt -t netlify/functions && cp -r webapp netlify/functions/webapp && pip install -r requirements.txt"
   publish = "webapp/static"
+
+[build.environment]
+  PYTHON_VERSION = "3.9"
+
+[functions]
+  directory = "netlify/functions"
 
 [dev]
   command = "flask run --port 8888"
