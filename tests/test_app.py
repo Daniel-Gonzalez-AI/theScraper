@@ -71,3 +71,9 @@ def test_scrape_selected_footer(client, local_site):
     assert b'Developed by Artemis Applied Research 2025' in resp.data
     assert b'mode-toggle' in resp.data
     assert b'toggle-log' in resp.data
+
+
+def test_darkmode_script_served(client):
+    resp = client.get('/static/darkmode.js')
+    assert resp.status_code == 200
+    assert b'function toggleDarkMode' in resp.data
