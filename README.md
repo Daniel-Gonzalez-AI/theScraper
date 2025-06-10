@@ -7,6 +7,7 @@ Web Scraper UI is a Flask-based web application that allows users to scrape text
 ## Features
 
 *   **Web-based Interface:** Modern UI for initiating and managing scraping tasks.
+*   **Dark Mode Toggle:** Switch between light and dark themes with your preference saved locally.
 *   **Recursive Link Discovery:** Enter one or more base URLs, and the application will discover internal links up to a configurable depth.
 *   **Selective Scraping:** Users can review the list of discovered links and select which ones to scrape.
 *   **Text Content Extraction:** Extracts the main textual content from selected web pages.
