@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discovered Links - Select to Scrape</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script defer src="{{ url_for('static', filename='darkmode.js') }}"></script>
 </head>
 <body>
 <div class="container">
@@ -54,6 +55,7 @@
         </form>
     {% endif %}
 
+    <button id="mode-toggle" type="button">Dark Mode</button>
     <hr>
     <p><a href="{{ url_for('index') }}" class="button">Start New Discovery</a></p>
     <footer>

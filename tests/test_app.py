@@ -50,6 +50,7 @@ def test_index_route(client):
     assert resp.status_code == 200
     assert b'Scrape' in resp.data or b'URL' in resp.data
     assert b'Developed by Artemis Applied Research 2025' in resp.data
+    assert b'mode-toggle' in resp.data
 
 def test_discover_no_urls(client):
     resp = client.post('/discover', data={'urls': ''}, follow_redirects=False)
@@ -61,9 +62,11 @@ def test_discover_valid_url(client, local_site):
     assert resp.status_code == 200
     assert b'Select links to scrape' in resp.data
     assert b'Developed by Artemis Applied Research 2025' in resp.data
+    assert b'mode-toggle' in resp.data
 
 def test_scrape_selected_footer(client, local_site):
     links = [f"{local_site}/index.html", f"{local_site}/page2.html"]
     resp = client.post('/scrape_selected', data={'selected_links': links})
     assert resp.status_code == 200
     assert b'Developed by Artemis Applied Research 2025' in resp.data
+    assert b'mode-toggle' in resp.data

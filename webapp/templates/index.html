@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Scraper - Discover Links</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script defer src="{{ url_for('static', filename='darkmode.js') }}"></script>
 </head>
 <body>
 <div class="container">
@@ -17,6 +18,7 @@
         <button type="submit">Discover Links</button>
     </form>
 
+    <button id="mode-toggle" type="button">Dark Mode</button>
     <hr>
     <footer>
         <p>Developed by Artemis Applied Research 2025</p>

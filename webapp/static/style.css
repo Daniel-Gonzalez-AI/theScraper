@@ -163,3 +163,30 @@ code {
     border-radius: 3px;
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1e1e1e;
+    color: #eee;
+}
+
+body.dark-mode .container {
+    background-color: #2b2b2b;
+}
+
+body.dark-mode a {
+    color: #6ca0ff;
+}
+
+body.dark-mode .summary-box {
+    background-color: #333;
+    border-color: #555;
+}
+
+body.dark-mode .error-message {
+    background-color: #552222;
+}
+
+body.dark-mode .success-message {
+    background-color: #225522;
+}
