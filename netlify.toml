@@ -1,5 +1,6 @@
 [build]
-  command = "pip install -r netlify/functions/requirements.txt -t netlify/functions && pip install -r requirements.txt"
+  # Install dependencies and bundle application code for the serverless function
+  command = "pip install -r netlify/functions/requirements.txt -t netlify/functions && cp -r webapp netlify/functions && pip install -r requirements.txt"
   functions = "netlify/functions"
   publish = "webapp/static"
 
