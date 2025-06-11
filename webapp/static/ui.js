@@ -4,8 +4,10 @@ function setupSpinner() {
     if (!form) return;
     form.addEventListener('submit', () => {
         const overlay = document.getElementById('spinner-overlay');
+        const statusEl = document.getElementById('spinner-status');
         if (overlay) {
             overlay.style.display = 'flex';
+            if (statusEl) statusEl.textContent = 'Starting...';
         }
     });
 }
@@ -31,6 +33,7 @@ function setupLogStream() {
     const logLines = [];
     const pre = document.getElementById('log-lines');
     const latest = document.getElementById('latest-log');
+    const statusEl = document.getElementById('spinner-status');
     if (!pre) return;
 
     const source = new EventSource('/logs_stream');
@@ -41,7 +44,21 @@ function setupLogStream() {
         if (latest) {
             latest.textContent = logLines[logLines.length - 1];
         }
+        if (statusEl) {
+            statusEl.textContent = parseStatus(logLines[logLines.length - 1]);
+        }
     };
+}
+
+function parseStatus(logLine) {
+    const msg = logLine.split(' - ').slice(2).join(' - ');
+    if (msg.includes('Starting link discovery')) return 'Discovering links...';
+    if (msg.includes('Found') && msg.includes('links')) return msg;
+    if (msg.includes('Starting scraping')) return 'Starting scraping...';
+    if (msg.includes('Scraping content from')) return 'Scraping pages...';
+    if (msg.includes('Saved content from')) return 'Saving page...';
+    if (msg.includes('completed')) return 'Completed.';
+    return msg;
 }
 
 document.addEventListener('DOMContentLoaded', () => {

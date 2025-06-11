@@ -209,6 +209,16 @@ code {
     100% { transform: rotate(360deg); }
 }
 
+.spinner-status {
+    margin-top: 15px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.dark .spinner-status {
+    color: #eee;
+}
+
 .hidden { display: none; }
 
 /* Log Dropdown */
