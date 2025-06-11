@@ -3,6 +3,7 @@ import logging
 import re
 from datetime import datetime
 from urllib.parse import urlparse
+from collections import deque
 
 # Global Logger - This might be reconfigured for Flask app context later
 logging.basicConfig(
@@ -11,6 +12,18 @@ logging.basicConfig(
     handlers=[logging.StreamHandler()]
 )
 logger = logging.getLogger(__name__)
+
+# In-memory log buffer handler for streaming last N log lines
+class LogBufferHandler(logging.Handler):
+    """Stores log records in a fixed-size deque for retrieval."""
+
+    def __init__(self, max_lines: int = 10):
+        super().__init__()
+        self.buffer = deque(maxlen=max_lines)
+
+    def emit(self, record: logging.LogRecord) -> None:
+        msg = self.format(record)
+        self.buffer.append(msg)
 
 # Output directory can be overridden with SCRAPER_OUTPUT_DIR.
 # Default to a writable location within the container/CI environment.

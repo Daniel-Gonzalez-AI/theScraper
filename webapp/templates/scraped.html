@@ -74,9 +74,9 @@
 
     <div class="log-dropdown mt-6">
         <button id="toggle-log" type="button" class="mb-2 px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded">Show Logs</button>
-        <pre id="latest-log">{{ logs[-1] if logs else 'No log entries' }}</pre>
+        <pre id="latest-log">Waiting for logs...</pre>
         <div id="log-container" class="hidden">
-            <pre>{{ logs|join('\n') if logs else 'No log entries' }}</pre>
+            <pre id="log-lines"></pre>
         </div>
     </div>
 
