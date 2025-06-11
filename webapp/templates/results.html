@@ -4,36 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discovered Links - Select to Scrape</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script defer src="{{ url_for('static', filename='darkmode.js') }}"></script>
     <script defer src="{{ url_for('static', filename='ui.js') }}"></script>
 </head>
-<body>
-<div class="container">
-    <h1>Review Discovered Links</h1>
-    <p>Below are the links found for the base URL(s) you provided. Please review and select the pages you wish to scrape. Deselect any pages you do not want.</p>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+<div class="max-w-3xl mx-auto my-8 p-6 bg-white dark:bg-gray-800 rounded shadow">
+    <h1 class="text-2xl font-bold mb-4 border-b border-blue-500 pb-2">Review Discovered Links</h1>
+    <p class="mb-4">Below are the links found for the base URL(s) you provided. Please review and select the pages you wish to scrape. Deselect any pages you do not want.</p>
 
     {% if not discovery_results or discovery_results|length == 0 %}
         <p class="error-message">No URLs were processed, or no discovery results are available. Please <a href="{{ url_for('index') }}">try again</a>.</p>
     {% else %}
-        <form action="{{ url_for('scrape_selected') }}" method="post">
+        <form action="{{ url_for('scrape_selected') }}" method="post" class="mb-6">
             {% set ns = namespace(has_discoverable_links=false) %}
             {% for base_url, result in discovery_results.items() %}
                 {% set outer_index = loop.index %}
-                <div class="base-url-section">
-                    <h2>Base URL: <code>{{ base_url }}</code></h2>
+                <div class="base-url-section mb-4 p-4 border rounded bg-gray-50 dark:bg-gray-700">
+                    <h2 class="font-semibold">Base URL: <code>{{ base_url }}</code></h2>
                     {% if result.error %}
                         <p class="error-message">Error during discovery: {{ result.error }}</p>
                     {% elif result.links and result.links|length > 0 %}
                         {% set ns.has_discoverable_links = true %}
-                        <p>Found {{ result.links|length }} unique link(s). Select links to scrape:</p>
-                        <ul class="link-list">
+                        <p class="mb-2">Found {{ result.links|length }} unique link(s). Select links to scrape:</p>
+                        <ul class="link-list space-y-1">
                             {% for link in result.links %}
                                 {# Generate a unique ID for each checkbox and label pair #}
                                 {% set checkbox_id = "link_" ~ outer_index ~ "_" ~ loop.index %}
-                                <li>
-                                    <input type="checkbox" name="selected_links" value="{{ link }}" id="{{ checkbox_id }}" checked>
-                                    <label for="{{ checkbox_id }}">{{ link }}</label>
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" name="selected_links" value="{{ link }}" id="{{ checkbox_id }}" class="mr-2" checked>
+                                    <label for="{{ checkbox_id }}" class="break-all">{{ link }}</label>
                                 </li>
                             {% endfor %}
                         </ul>
@@ -56,11 +57,11 @@
         </form>
     {% endif %}
 
-    <button id="mode-toggle" type="button">Dark Mode</button>
-    <hr>
-    <p><a href="{{ url_for('index') }}" class="button">Start New Discovery</a></p>
-    <footer>
-        <p>Developed by Artemis Applied Research 2025</p>
+    <button id="mode-toggle" type="button" class="mb-4 px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded">Dark Mode</button>
+    <hr class="my-4">
+    <p><a href="{{ url_for('index') }}" class="px-4 py-2 bg-blue-500 text-white rounded">Start New Discovery</a></p>
+    <footer class="text-center text-sm text-gray-600 dark:text-gray-400 mt-4">
+        <p>Developed as an open source resource by Daniel Gonzalez at ArtemisAI</p>
     </footer>
 </div>
 <div id="spinner-overlay" class="spinner-overlay">

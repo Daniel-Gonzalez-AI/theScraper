@@ -4,24 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Scraper - Discover Links</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script defer src="{{ url_for('static', filename='darkmode.js') }}"></script>
 </head>
-<body>
-<div class="container">
-    <h1>Discover Links</h1>
-    <p>Enter one or more base URLs below (one per line or comma-separated) to discover internal links. The scraper will attempt to find all pages under the same domain and path prefix.</p>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+<div class="max-w-3xl mx-auto my-8 p-6 bg-white dark:bg-gray-800 rounded shadow">
+    <h1 class="text-2xl font-bold mb-4 border-b border-blue-500 pb-2">Discover Links</h1>
+    <p class="mb-4">Enter one or more base URLs below (one per line or comma-separated) to discover internal links. The scraper will attempt to find all pages under the same domain and path prefix.</p>
 
-    <form action="{{ url_for('discover') }}" method="post">
-        <label for="urls">Base URLs:</label><br>
-        <textarea id="urls" name="urls" rows="5" required placeholder="e.g., https://example.com&#10;http://another-site.org/docs"></textarea>
-        <button type="submit">Discover Links</button>
+    <form action="{{ url_for('discover') }}" method="post" class="mb-6">
+        <label for="urls" class="block mb-2 font-semibold">Base URLs:</label>
+        <textarea id="urls" name="urls" rows="5" required placeholder="e.g., https://example.com&#10;http://another-site.org/docs" class="w-full p-2 mb-4 border rounded"></textarea>
+        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Discover Links</button>
     </form>
 
-    <button id="mode-toggle" type="button">Dark Mode</button>
-    <hr>
-    <footer>
-        <p>Developed by Artemis Applied Research 2025</p>
+    <button id="mode-toggle" type="button" class="mb-4 px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded">Dark Mode</button>
+    <hr class="my-4">
+    <footer class="text-center text-sm text-gray-600 dark:text-gray-400">
+        <p>Developed as an open source resource by Daniel Gonzalez at ArtemisAI</p>
     </footer>
 </div>
 </body>
