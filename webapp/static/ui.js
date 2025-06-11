@@ -27,8 +27,26 @@ function setupLogToggle() {
     });
 }
 
+function setupLogStream() {
+    const logLines = [];
+    const pre = document.getElementById('log-lines');
+    const latest = document.getElementById('latest-log');
+    if (!pre) return;
+
+    const source = new EventSource('/logs_stream');
+    source.onmessage = (e) => {
+        logLines.push(e.data);
+        if (logLines.length > 10) logLines.shift();
+        pre.textContent = logLines.join('\n');
+        if (latest) {
+            latest.textContent = logLines[logLines.length - 1];
+        }
+    };
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     setupSpinner();
     setupLogToggle();
+    setupLogStream();
 });
 

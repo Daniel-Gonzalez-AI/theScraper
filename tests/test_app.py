@@ -77,3 +77,12 @@ def test_darkmode_script_served(client):
     resp = client.get('/static/darkmode.js')
     assert resp.status_code == 200
     assert b'function toggleDarkMode' in resp.data
+
+
+def test_logs_stream_endpoint(client, local_site):
+    links = [f"{local_site}/index.html"]
+    client.post('/scrape_selected', data={'selected_links': links})
+    resp = client.get('/logs_stream')
+    assert resp.status_code == 200
+    chunk = next(resp.response)
+    assert b'data:' in chunk
