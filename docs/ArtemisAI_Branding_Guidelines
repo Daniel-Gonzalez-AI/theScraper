@@ -1,0 +1,91 @@
+# ArtemisAI – Brand & Style Framework
+
+**Purpose:** Ensure consistent, memorable visuals and messaging whenever ArtemisAI communicates—on the web, in slide decks, social media, or print.
+
+---
+
+## 1. Brand Essence
+| Element     | Definition                                                                                   |
+|-------------|----------------------------------------------------------------------------------------------|
+| **Mission** | "Democratize cutting‑edge AI so every small business can compete and thrive."               |
+| **Vision**  | "A world where access to powerful AI is as simple as flipping a switch."                     |
+| **Personality** | Futuristic • Empowering • Approachable • Trustworthy                                   |
+| **Tagline** | "AI, unlocked for all."                                                                      |
+
+---
+
+## 2. Logo System
+- **Primary Mark:** The triangular glyph with humanoid figure ("Artemis Glyph").
+- **Clear‑space:** Minimum: height of the glyph’s circle on all sides.
+- **Minimum size:** 32 px height digital / 10 mm print.
+- **Color Variations:**
+  - Full‑color (gradient or flat)
+  - Monochrome light (white) & dark (#1B1643)
+- **Don’ts:** No skewing, recoloring outside palette, or placing on low‑contrast backgrounds.
+
+---
+
+## 3. Color Palette
+| Role                    | HEX       | RGB         | Usage                          |
+|-------------------------|-----------|-------------|--------------------------------|
+| **Primary Deep Space Violet** | `#1B1643` | 27,22,67    | Backgrounds, CTA buttons       |
+| **Secondary Lavender**  | `#B7A8F1` | 183,168,241 | Accents, gradients              |
+| **Accent Aqua**         | `#3EE0C7` | 62,224,199  | Highlights, icons               |
+| **Accent Magenta**      | `#FF4BE9` | 255,75,233  | Highlights, interactive states  |
+| **Neutral Light**       | `#FFFFFF` | 255,255,255 | Text on dark BGs                |
+| **Neutral Dark**        | `#0C0B1C` | 12,11,28    | Background layers               |
+
+> **Gradient:** Primary Violet → Neutral Dark with subtle radial glow.
+
+---
+
+## 4. Typography
+| Style         | Font             | Fallback          | Sample Use                    |
+|---------------|------------------|--------------------|-------------------------------|
+| **Headlines** | _Poppins SemiBold_ | Arial, sans‑serif | Landing pages, hero text     |
+| **Body**      | _Inter Regular_  | Helvetica, sans‑serif | Paragraphs, UI labels   |
+| **Code/Data** | _Fira Code_      | Courier New, monospace | Code snippets, CLI      |
+
+**Hierarchy**
+- H1 48 px / 56 px line‑height
+- H2 36 px / 44 px
+- Body 16 px / 28 px
+
+---
+
+## 5. Iconography & Illustration
+- **Stroke weight:** 2 px consistent.
+- **Shapes:** Triangles, circles, hex‑grids, constellation lines.
+- **Effects:** Subtle inner‑glows matching Accent Aqua & Magenta.
+
+---
+
+## 6. Imagery Style
+- **Conceptual:** Abstract depictions of data nodes, constellations, small business scenes overlaid with geometric AI motifs.
+- **Tone:** Optimistic, futuristic but human‑centric (focus on empowerment).
+- **Filters:** Deep violet overlay @ 35% opacity for unity.
+
+---
+
+## 7. Voice & Tone
+| Scenario       | Tone                | Example                                           |
+|----------------|---------------------|---------------------------------------------------|
+| Website Hero   | Inspirational       | “Big‑league AI, finally within reach.”            |
+| Blog Post      | Educational + Friendly | “Here’s how AI can auto‑sort those invoices…”   |
+| Release Notes  | Concise + Clear     | “Added multilingual support; dashboards now…”     |
+
+---
+
+## 8. UI Components (Quick Specs)
+- **Buttons:** 12 px radius, gradient fill (Primary→Secondary), bold white text.
+- **Cards:** 24 px radius, soft shadow (`0 4 px 12 px rgba(0,0,0,0.25)`), icon top‑left.
+- **Inputs:** Dark BG, 1 px Lavender border, Aqua focus glow.
+
+---
+
+## 9. Accessibility
+- Maintain WCAG AA contrast (≥4.5:1) for all text.
+- Provide alt text for all imagery.
+- Keyboard‑navigable interactive elements.
+
+---
