@@ -1,11 +1,17 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, Response, stream_with_context
 import re
 from urllib.parse import urlparse # Added for /scrape_selected
 from .scraper import start_link_discovery, scrape_selected_pages
-from .utils import logger
+from .utils import logger, LogBufferHandler
 import logging
+import time
 
 app = Flask(__name__)
+
+# Log buffer handler keeps the last 10 log lines for streaming
+log_buffer_handler = LogBufferHandler()
+log_buffer_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+logger.addHandler(log_buffer_handler)
 
 # Keep a simple global store for discovered links for now.
 # In a real app, this would be per-session or use a database.
@@ -76,15 +82,7 @@ def scrape_selected():
 
     logger.info(f"Received {len(selected_links)} links for scraping. Session base: {session_name_base}")
 
-    log_lines = []
-
-    class ListHandler(logging.Handler):
-        def emit(self, record):
-            log_lines.append(self.format(record))
-
-    handler = ListHandler()
-    handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
-    logger.addHandler(handler)
+    # logs are automatically captured by log_buffer_handler
 
     # Call the scraper function (ensure it's imported)
     # from .scraper import scrape_selected_pages (should be at the top of the file)
@@ -109,27 +107,36 @@ def scrape_selected():
 
         if output_dir: # If None, it means directory creation failed critically
             logger.info(f"Scraping session complete. Output directory: {output_dir}")
-            logger.removeHandler(handler)
             return render_template('scraped.html',
                                    output_directory=output_dir,
                                    num_scraped=num_scraped,
                                    num_selected=num_selected,
                                    errors=errors,
-                                   selected_links=selected_links,
-                                   logs=log_lines)
+                                   selected_links=selected_links)
         else:
             logger.error("Scraping failed critically: No output directory was created/returned.")
             # Handle this critical error, maybe show a different template or an error message
             # For now, redirecting to index with a conceptual error state.
             # A flash message would be good here.
-            logger.removeHandler(handler)
             return redirect(url_for('index')) # Simplified error handling
 
     except Exception as e:
         logger.error(f"An unexpected error occurred during scraping process: {e}", exc_info=True)
-        logger.removeHandler(handler)
         # Generic error feedback
-        return render_template('scraped.html', error_message=str(e), selected_links=selected_links, logs=log_lines)
+        return render_template('scraped.html', error_message=str(e), selected_links=selected_links)
+
+
+@app.route('/logs_stream')
+def logs_stream():
+    def event_stream():
+        last = 0
+        while True:
+            while len(log_buffer_handler.buffer) > last:
+                line = log_buffer_handler.buffer[last]
+                last += 1
+                yield f"data: {line}\n\n"
+            time.sleep(1)
+    return Response(stream_with_context(event_stream()), mimetype='text/event-stream')
 
 
 if __name__ == '__main__':

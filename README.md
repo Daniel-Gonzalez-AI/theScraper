@@ -15,6 +15,7 @@ Web Scraper UI is a Flask-based web application that allows users to scrape text
 *   **Integrated File Management:** Filebrowser service provides easy access to view, download, and manage scraped files directly in your browser.
 *   **Dockerized:** Comes with `Dockerfile` and `docker-compose.yml` for quick and consistent setup and deployment.
 *   **Persistent Storage:** Scraped data is stored in a Docker named volume, ensuring data persistence across container restarts.
+*   **Live Status Updates:** A spinner shows short progress messages during scraping based on the latest log entries.
 
 ## Prerequisites
 
